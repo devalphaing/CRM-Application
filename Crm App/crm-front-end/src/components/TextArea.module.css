@@ -1,0 +1,33 @@
+.container{
+    padding: 1rem;
+}
+
+.text-area-head{
+    border: 1px solid #BABFC5;
+    height: 2rem;
+}
+
+.text-field{
+    height: calc(100vh - 25rem);
+    border: 1px solid #BABFC5;
+    resize: none;
+    width: calc(100% - 0.38rem);
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.text-field:focus-visible{
+    border: 1px solid #BABFC5;
+    outline: none;
+}
+
+.btn{
+    position: absolute;
+    z-index: 1;
+    height: 2rem;
+    width: 3rem;
+    bottom: 3rem;
+    left: calc(100% - 5rem);
+    background: #05047E;
+    color: white;
+}

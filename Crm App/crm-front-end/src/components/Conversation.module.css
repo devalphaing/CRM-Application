@@ -1,0 +1,38 @@
+.container{
+    border-top: 1px solid #D5D8DC;
+    border-bottom: 1px solid #D5D8DC;
+    padding: 1rem;
+    font-size: 0.7rem;
+    overflow: auto;
+    max-height: 5.5rem;
+}
+
+.user-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    padding: 0rem 0rem 0.4rem 0rem;
+}
+
+.userText{
+    background: #E6F6FF;
+    padding: 0.5rem;
+}
+
+.userText-time{
+    padding: 0.3rem 0rem 0rem 0rem;
+}
+
+
+.response-container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 1rem;
+}
+
+.supportText{
+    background: #F1F2F3;
+    padding: 0.5rem;
+}
