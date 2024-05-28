@@ -25,8 +25,13 @@ const Conversation = ({ messages }) => {
     });
   };
 
+  // Determine additional class based on messages length
+  const containerClass = messages.length === 1 
+    ? `${styles.container} ${styles['supportText-empty']}` 
+    : styles.container;
+
   return (
-    <div className={styles["container"]} ref={containerRef}>
+    <div className={containerClass} ref={containerRef}>
       {messages?.map((message, index) => (
         <div
           key={index}
@@ -43,7 +48,7 @@ const Conversation = ({ messages }) => {
                 <div className={styles["userText"]}>
                   {message && message?.content
                     ? message?.content
-                    : "This is an automated bot response."}
+                    : "User's Message"}
                 </div>
                 <div className={styles["userText-time"]}>
                   Chat - {formatTimestamp(message?.timestamp)}

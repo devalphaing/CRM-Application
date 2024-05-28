@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "b54a4b40-19c1-476d-bbdd-05498c2d4393",
+		"name": "chat_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13774175"
+	},
+	"item": [
+		{
+			"name": "getMessage",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/api/message?conversationId=54321",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"message"
+					],
+					"query": [
+						{
+							"key": "conversationId",
+							"value": "54321"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateTimeConversationTable",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"conversationID\": \"54321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/api/updateTime",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"updateTime"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getConversationById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"conversationID\": \"54321\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/api/getConversation?userid=12345",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"getConversation"
+					],
+					"query": [
+						{
+							"key": "userid",
+							"value": "12345"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"12345\",\n    \"conversationId\": \"54321\",\n    \"direction\": \"in\",\n    \"content\": \"Testing\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/api/message",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
