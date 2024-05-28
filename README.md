@@ -11,8 +11,7 @@ The project is organized into the following structure:
 - `Crm App`
   - `crm-front-end`
   - `node-backend`
-  - `Crm App`
-    - `Postman Collection`
+  - `Postman Collection`
 
 ## Setup Instructions
 
