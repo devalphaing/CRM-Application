@@ -10,6 +10,7 @@ const ChatPage = () => {
   const userId = '12345';
   const [conversationData, setConversationData] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [lastUpdated, setLastUpdated] = useState(null);
 
   const sendMessage = async (text) => {
     try {
@@ -24,11 +25,18 @@ const ChatPage = () => {
       const newMessage = apiResponse.data.data;
       console.log(apiResponse, 'send message');
 
+      const latestTimestamp = newMessage[0].timestamp;
+
       // Update messages state with the new message
       setMessages((prevMessages) => [...prevMessages, newMessage[0]]);
+      
+      // Update lastUpdated state
+      setLastUpdated(latestTimestamp);
+
       // After 1 second, add the bot's response to the messages state
       setTimeout(() => {
         setMessages((prevMessages) => [...prevMessages, newMessage[1]]);
+        setLastUpdated(newMessage[1].timestamp); // Update lastUpdated with bot's response timestamp
       }, 1000);
     } catch (err) {
       console.log(err);
@@ -36,7 +44,7 @@ const ChatPage = () => {
   };
 
   useEffect(() => {
-    try{
+    try {
       const fetchInfo = async () => {
         const params = { userid: userId };
         const info = await axios.get(`http://${data.endpoint}/api/getConversation`, { params });
@@ -46,11 +54,17 @@ const ChatPage = () => {
         if (convData?.conversationid) {
           const messageParams = { conversationid: convData.conversationid };
           const messageResponse = await axios.get(`http://${data.endpoint}/api/message`, { params: messageParams });
-          setMessages(messageResponse?.data?.data);
+          const messages = messageResponse?.data?.data;
+          setMessages(messages);
+
+          // Set lastUpdated to the timestamp of the latest message
+          if (messages && messages.length > 0) {
+            setLastUpdated(messages[messages.length - 1].timestamp);
+          }
         }
       };
       fetchInfo();
-    }catch(err){
+    } catch (err) {
       console.log(err);
     }   
   }, []);
@@ -58,12 +72,11 @@ const ChatPage = () => {
   return (
     <div className={styles['container']}>
       <div className={styles['chat-container']}>
-
         <div className={styles['cancel-text']}>
           I want to cancel my subscription
         </div>
 
-        <Info data={conversationData} />
+        <Info data={conversationData} lastUpdated={lastUpdated} />
         <Conversation messages={messages} />
         <TextArea sendMessage={sendMessage} />
       </div>
