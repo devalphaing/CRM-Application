@@ -11,7 +11,6 @@ const Conversation = ({ messages }) => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-    console.log(messages);
   }, [messages]);
 
   const formatTimestamp = (timestamp) => {
@@ -47,7 +46,6 @@ const Conversation = ({ messages }) => {
                     : "This is an automated bot response."}
                 </div>
                 <div className={styles["userText-time"]}>
-                  {console.log(message?.timestamp)}
                   Chat - {formatTimestamp(message?.timestamp)}
                   <img src={seenIcon} alt="seen Icon" />
                 </div>

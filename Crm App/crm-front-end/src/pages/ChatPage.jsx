@@ -23,7 +23,6 @@ const ChatPage = () => {
 
       const apiResponse = await axios.post(`http://${data.endpoint}/api/message`, payload);
       const newMessage = apiResponse.data.data;
-      console.log(apiResponse, 'send message');
 
       const latestTimestamp = newMessage[0].timestamp;
 
