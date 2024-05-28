@@ -2,16 +2,24 @@
 
 ## Overview
 
-This application involves creating a CRM application with both front-end and back-end components. The front-end is built using React and Material-UI, while the back-end is developed using Node.js with a PostgreSQL database.
+This project involves creating a Customer Relationship Management (CRM) application with both front-end and back-end components. The front-end is built using React and Material-UI, while the back-end is developed using Node.js with a PostgreSQL database.
 
 ## Project Structure
 
 The project is organized into the following structure:
 
-- `Crm App`
-  - `crm-front-end`
-  - `node-backend`
-  - `Postman Collection`
+crm-app/
+  ├── crm-front-end/
+  ├── node-backend/
+  └── Postman Collection/
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js installed on your machine
+- PostgreSQL installed and running
+- Postman installed for API testing
 
 ## Setup Instructions
 
@@ -66,7 +74,11 @@ The project is organized into the following structure:
 
 ## Usage
 
-Once both servers are running, you can access the application and interact with it. The front-end provides a user interface to interact with the CRM system, while the backend handles API requests and database operations.
+- Once both servers are running, you can access the application and interact with it. The front-end provides a user interface to interact with the CRM system, while the backend handles API requests and database operations.
+
+- Example:
+   - Open your browser and navigate to http://localhost:3000.
+   - Use the UI to perform CRUD operations on customer data.
 
 ## Additional Notes
 
