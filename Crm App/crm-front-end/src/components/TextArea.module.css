@@ -9,9 +9,9 @@
 }
 
 .text-field{
-    /* height: calc(100vh - 25rem); */
     height: 84%;
     border: 1px solid #BABFC5;
+    border-top: none;
     resize: none;
     width: calc(100% - 0.38rem);
     overflow: auto;
@@ -24,6 +24,7 @@
 
 .text-field:focus-visible{
     border: 1px solid #BABFC5;
+    border-top: none;
     outline: none;
 }
 
