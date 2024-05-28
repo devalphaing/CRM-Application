@@ -4,12 +4,13 @@
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
+  color: #69727D;
 }
 
 .container {
   padding: 1rem 0rem 0rem 0rem;
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .case-id-container {

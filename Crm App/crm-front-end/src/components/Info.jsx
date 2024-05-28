@@ -17,7 +17,6 @@ const Info = ({ data }) => {
     hour: "2-digit",
     minute: "2-digit",
     hour12: true,
-    timeZone: "UTC",
   };
 
   useEffect(() => {
@@ -49,6 +48,7 @@ const Info = ({ data }) => {
       <div className={styles["container"]}>
         <div className={styles["case-id-container"]}>
           <div>Created At:</div>
+          {console.log(data?.createdat)}
           {createDate}
         </div>
         <div className={styles["prod-name-container"]}>

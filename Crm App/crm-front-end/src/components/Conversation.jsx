@@ -14,6 +14,18 @@ const Conversation = ({ messages }) => {
     console.log(messages);
   }, [messages]);
 
+  const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleString("en-US", {
+      month: "2-digit", 
+      year: "numeric",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
   return (
     <div className={styles["container"]} ref={containerRef}>
       {messages?.map((message, index) => (
@@ -30,10 +42,13 @@ const Conversation = ({ messages }) => {
               <img src={userIcon} alt="User Icon" />
               <div className={styles["userText-container"]}>
                 <div className={styles["userText"]}>
-                  {message && message?.content ? message?.content : "This is an automated bot response."}
+                  {message && message?.content
+                    ? message?.content
+                    : "This is an automated bot response."}
                 </div>
                 <div className={styles["userText-time"]}>
-                  {new Date(message?.timestamp).toLocaleString()}
+                  {console.log(message?.timestamp)}
+                  Chat - {formatTimestamp(message?.timestamp)}
                   <img src={seenIcon} alt="seen Icon" />
                 </div>
               </div>
@@ -42,10 +57,12 @@ const Conversation = ({ messages }) => {
             <>
               <div className={styles["supportText-container"]}>
                 <div className={styles["supportText"]}>
-                  {message && message?.content ? message?.content : "This is an automated bot response."}
+                  {message && message?.content
+                    ? message?.content
+                    : "This is an automated bot response."}
                 </div>
                 <div className={styles["supportText-time"]}>
-                  {new Date(message?.timestamp).toLocaleString()}
+                  Chat - {formatTimestamp(message?.timestamp)}
                   <img src={seenIcon} alt="seen Icon" />
                 </div>
               </div>

@@ -22,11 +22,14 @@ const ChatPage = () => {
 
       const apiResponse = await axios.post(`http://${data.endpoint}/api/message`, payload);
       const newMessage = apiResponse.data.data;
-      console.log(apiResponse);
+      console.log(apiResponse, 'send message');
 
       // Update messages state with the new message
       setMessages((prevMessages) => [...prevMessages, newMessage[0]]);
-      setMessages((prevMessages) => [...prevMessages, newMessage[1]]);
+      // After 1 second, add the bot's response to the messages state
+      setTimeout(() => {
+        setMessages((prevMessages) => [...prevMessages, newMessage[1]]);
+      }, 1000);
     } catch (err) {
       console.log(err);
     }
@@ -51,10 +54,6 @@ const ChatPage = () => {
       console.log(err);
     }   
   }, []);
-
-  useEffect(()=> {
-    console.log("message :- ", messages);
-  }, [messages])
 
   return (
     <div className={styles['container']}>

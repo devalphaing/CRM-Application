@@ -48,7 +48,7 @@ const createTable = async () => {
       conversationid VARCHAR(255),
       direction VARCHAR(255),
       content TEXT,
-      timestamp TIMESTAMP
+      timestamp VARCHAR(255)
     )
   `;
 
