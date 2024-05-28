@@ -30,6 +30,9 @@ const TextArea = ({ sendMessage }) => {
         sx={{
           backgroundColor: "#05047E",
           "&:hover": { backgroundColor: "#05047E" },
+          textTransform: "none",
+          fontSize: "0.7rem",
+          borderRadius: "0rem"
         }}
         className={styles["btn"]}
         onClick={handleSubmit}
