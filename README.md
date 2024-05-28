@@ -8,10 +8,11 @@ This project involves creating a Customer Relationship Management (CRM) applicat
 
 The project is organized into the following structure:
 
-crm-app/
-  ├── crm-front-end/
-  ├── node-backend/
-  └── Postman Collection/
+- Crm App ⁠
+  - ⁠ crm-front-end ⁠
+  - ⁠ node-backend ⁠
+  -  Postman Collection
+
 
 ## Prerequisites
 
