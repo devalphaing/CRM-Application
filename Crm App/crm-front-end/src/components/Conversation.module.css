@@ -4,35 +4,56 @@
     padding: 1rem;
     font-size: 0.7rem;
     overflow: auto;
-    max-height: 5.5rem;
+    height: 6.5rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #69727D;
 }
 
 .user-container{
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     gap: 1rem;
     padding: 0rem 0rem 0.4rem 0rem;
+    margin-bottom: 0.5rem;
 }
 
 .userText{
     background: #E6F6FF;
     padding: 0.5rem;
+    max-width: 20rem;
+    line-height: 1.2rem;
 }
 
 .userText-time{
     padding: 0.3rem 0rem 0rem 0rem;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 
 .response-container{
     display: flex;
     justify-content: end;
-    align-items: center;
+    align-items: start;
     gap: 1rem;
 }
 
 .supportText{
     background: #F1F2F3;
     padding: 0.5rem;
+    max-width: 20rem;
+    line-height: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.supportText-time{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 0.5rem;
 }

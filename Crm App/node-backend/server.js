@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { createDb, createTable, insertUser, insertConversation, insertAnswers, insertMessage, getMessagesByConversation} = require("./db");
+const { createDb, createTable, insertUser, insertConversation, insertAnswers, insertMessage, getMessagesByConversation, getAnswers} = require("./db");
 const { updateTimeController, getConversationById, insertMessageController, getMessagesByConversationController } = require("./controller/apiController");
 
 const app = express();
@@ -46,9 +46,14 @@ const initialSetup = async () => {
     "Alright. Let's try resetting the Widget Pro. Can you please go to the plugin settings and click on 'Reset to Default'?",
     "I reset the settings to default, but the Widget Pro is still not turning on."
   ]
-  answers.forEach(async (answer)=> {
-    await insertAnswers(answer);
-  })
+
+  const predefinedAnswersData = await getAnswers();
+
+  if(predefinedAnswersData.length === 0){
+    answers.forEach(async (answer)=> {
+      await insertAnswers(answer);
+    })
+  }
 
   //adding initial message
   const messages = await getMessagesByConversation("54321");   

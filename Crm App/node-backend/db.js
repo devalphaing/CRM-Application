@@ -6,7 +6,8 @@ const adminPool = new Pool({
   host: "localhost",
   database: "postgres",
   password: config.dbPassword,
-  port: config.port
+  port: config.port,
+  max: 20
 });
 
 const getPool = (dbName) => {
@@ -15,7 +16,8 @@ const getPool = (dbName) => {
     host: "localhost",
     database: dbName,
     password: config.dbPassword,
-    port: config.port
+    port: config.port,
+    max: 20
   });
 
   return pool;
@@ -72,10 +74,6 @@ const createTable = async () => {
     )
   `;
 
-  const deleteResponseTable = `
-    DROP TABLE IF EXISTS answers
-  `;
-
   const createResponseTable = `
     CREATE TABLE IF NOT EXISTS answers (
       id SERIAL PRIMARY KEY,
@@ -88,7 +86,6 @@ const createTable = async () => {
     await client.query(createMessageTableQuery);
     await client.query(createUserTableQuery);
     await client.query(createConversationTableQuery);
-    await client.query(deleteResponseTable);
     await client.query(createResponseTable);
   } catch (error) {
     console.error("Error creating database:", error);
@@ -235,7 +232,7 @@ const getConversationDataById = async (userid) => {
   try {
     const queryResult = await client.query(updateQuery, values);
     console.log(queryResult.rows);
-    console.log("conversation time updated successfully");
+    console.log("conversation data fetched successfully");
     return queryResult.rows;
   } catch (error) {
     console.error("Error inserting message:", error);
@@ -258,7 +255,7 @@ const getMessagesByConversation = async (conversationId) => {
   const client = await pool.connect();
   try {
     const queryResult = await client.query(getDataQuery, values);
-    console.log(queryResult.rows);
+    console.log(queryResult.rows, 'messages');
     console.log("fetched messages");
     return queryResult.rows;
   } catch (error) {

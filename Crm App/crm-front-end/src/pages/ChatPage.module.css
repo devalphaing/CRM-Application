@@ -1,7 +1,7 @@
 .container{
     width: 100%;
     padding: 1rem;
-    height: calc(100vh - 6rem);
+    height: calc(100vh - 5rem);
 }
 
 .chat-container{
@@ -10,5 +10,6 @@
 }
 
 .cancel-text{
-    padding: 1rem 0rem 0rem 1rem;
+    padding: 0.7rem 0rem 0rem 1rem;
+    color: #3A3F45;
 }

@@ -2,48 +2,58 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Conversation.module.css";
 import userIcon from "../svg/user-icon.svg";
 import supportIcon from "../svg/support-icon.svg";
+import seenIcon from "../svg/seen.svg";
 
-//need to work based on backend
-const Conversation = () => {
+const Conversation = ({ messages }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }); // This will run only once when the component mounts
+    console.log(messages);
+  }, [messages]);
 
   return (
     <div className={styles["container"]} ref={containerRef}>
-      <div className={styles["user-container"]}>
-        <img src={userIcon} />
-        <div className={styles["userText-container"]}>
-          <div className={styles["userText"]}>
-            Hi, my Widget Pro is not turning on.
-          </div>
-
-          <div className={styles["userText-time"]}>Chat-10/01/2023 3:49 PM</div>
+      {messages?.map((message, index) => (
+        <div
+          key={index}
+          className={
+            message?.direction === "in"
+              ? styles["user-container"]
+              : styles["response-container"]
+          }
+        >
+          {message?.direction === "in" ? (
+            <>
+              <img src={userIcon} alt="User Icon" />
+              <div className={styles["userText-container"]}>
+                <div className={styles["userText"]}>
+                  {message && message?.content ? message?.content : "This is an automated bot response."}
+                </div>
+                <div className={styles["userText-time"]}>
+                  {new Date(message?.timestamp).toLocaleString()}
+                  <img src={seenIcon} alt="seen Icon" />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={styles["supportText-container"]}>
+                <div className={styles["supportText"]}>
+                  {message && message?.content ? message?.content : "This is an automated bot response."}
+                </div>
+                <div className={styles["supportText-time"]}>
+                  {new Date(message?.timestamp).toLocaleString()}
+                  <img src={seenIcon} alt="seen Icon" />
+                </div>
+              </div>
+              <img src={supportIcon} alt="Support Icon" />
+            </>
+          )}
         </div>
-      </div>
-
-      <div className={styles["response-container"]}>
-        <div className={styles["supportText"]}>
-          Hello John, have you tried checking the memory allocated for your
-          site?
-        </div>
-        <img src={supportIcon} />
-      </div>
-
-      <div className={styles["user-container"]}>
-        <img src={userIcon} />
-        <div className={styles["userText-container"]}>
-          <div className={styles["userText"]}>
-            Hi, my Widget Pro is not turning on.
-          </div>
-
-          <div className={styles["userText-time"]}>Chat-10/01/2023 3:49 PM</div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

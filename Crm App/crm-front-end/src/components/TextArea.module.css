@@ -1,5 +1,6 @@
 .container{
     padding: 1rem;
+    height: calc(100vh - 23rem);
 }
 
 .text-area-head{
@@ -8,12 +9,17 @@
 }
 
 .text-field{
-    height: calc(100vh - 25rem);
+    /* height: calc(100vh - 25rem); */
+    height: 84%;
     border: 1px solid #BABFC5;
     resize: none;
     width: calc(100% - 0.38rem);
     overflow: auto;
     overflow-x: hidden;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #69727D;
 }
 
 .text-field:focus-visible{

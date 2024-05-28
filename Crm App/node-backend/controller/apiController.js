@@ -37,18 +37,37 @@ const getConversationById = async (req, res)=> {
 
 const insertMessageController = async (req, res) => {
     try{
+        let responseData = [];
         const { userId, conversationId, direction, content } = req.body;
         let now = new Date();
         let currentDate = now.toISOString();
         //user's message stored
         await insertMessage(userId, conversationId, direction, content, currentDate);
+        const userMessage = {
+          userId,
+          conversationId, 
+          direction, 
+          content,
+          timestamp: currentDate
+        }
+        responseData.push(userMessage);
 
         const predefinedAnswers = await getAnswers();
         const randomIndex = Math.floor(Math.random() * 7) + 1;
         now = (new Date()).toISOString();
         await insertMessage(userId, conversationId, "out", predefinedAnswers[randomIndex]?.content, now);
+        await updateTimeConversation(now, conversationId);
+        const botMessage = {
+          userId, 
+          conversationId,
+          direction: "out",
+          content: predefinedAnswers[randomIndex]?.content,
+          timestamp: now
+        }
+        responseData.push(botMessage);
         return {
-            status: true
+            status: true,
+            data: responseData
         }
     }catch(err) {
         console.log(err);
@@ -60,8 +79,8 @@ const insertMessageController = async (req, res) => {
 
 const getMessagesByConversationController = async (req, res) => {
     try{
-        const { conversationId } = req.query;
-        const response = await getMessagesByConversation(conversationId);
+        const { conversationid } = req.query;
+        const response = await getMessagesByConversation(conversationid);
         console.log(response)
         return{
             status: true,
